@@ -42,10 +42,10 @@ class FadingMarqueeWidget extends StatefulWidget {
   });
 
   @override
-  State<FadingMarqueeWidget> createState() => _FadingMarqueeWidgetState();
+  State<FadingMarqueeWidget> createState() => FadingMarqueeWidgetState();
 }
 
-class _FadingMarqueeWidgetState extends State<FadingMarqueeWidget>
+class FadingMarqueeWidgetState extends State<FadingMarqueeWidget>
     with SingleTickerProviderStateMixin {
   late final AnimationController animationController;
   late final Animation<Offset> offset;
@@ -131,6 +131,7 @@ class _FadingMarqueeWidgetState extends State<FadingMarqueeWidget>
   @override
   void dispose() {
     animationController.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -186,4 +187,8 @@ class _FadingMarqueeWidgetState extends State<FadingMarqueeWidget>
         ),
     ],
   );
+
+  void setSpeedDuration(Duration duration) {
+    animationController.duration = duration;
+  }
 }
